@@ -1,6 +1,6 @@
 package team.corpore.in.pz2calculator;
 
-import android.content.Intent;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String SIGN_EQ = "=";
 
     private TextView input;
+    private NestedScrollView inputScroll;
     private TextView number1;
     private TextView number2;
     private TextView number3;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView minusButton;
     private TextView multiplyButton;
     private TextView divideButton;
+    private TextView dotButton;
 
     private String firstVariable = "";
     private String secondVariable = "";
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         input = findViewById(R.id.input);
+        inputScroll = findViewById(R.id.input_scroll);
         number1 = findViewById(R.id.number1);
         number2 = findViewById(R.id.number2);
         number3 = findViewById(R.id.number3);
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         minusButton = findViewById(R.id.minus_button);
         multiplyButton = findViewById(R.id.multiply_button);
         divideButton = findViewById(R.id.divide_button);
+        dotButton = findViewById(R.id.dot_button);
 
         input.setOnClickListener(new OnClickNumberButton());
         number1.setOnClickListener(new OnClickNumberButton());
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         minusButton.setOnClickListener(new OnClickSignButton());
         multiplyButton.setOnClickListener(new OnClickSignButton());
         divideButton.setOnClickListener(new OnClickSignButton());
+        dotButton.setOnClickListener(new OnClickNumberButton());
     }
 
     private double operationOfSign(double firstVariable, double secondVariable, String sign) {
@@ -114,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             input.setText(result);
+            inputScroll.fullScroll(View.FOCUS_DOWN);
         }
     }
 
@@ -148,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             input.setText(result);
+            inputScroll.fullScroll(View.FOCUS_DOWN);
         }
     }
 
@@ -174,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 sign = buttonValue;
                 String result = firstVariable + sign;
                 input.setText(result);
+                inputScroll.fullScroll(View.FOCUS_DOWN);
             }
         }
     }
@@ -184,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
         sign = "";
         resultVariable = "";
         input.setText(firstVariable);
+        inputScroll.fullScroll(View.FOCUS_DOWN);
     }
 
     private void calculateResult() {
@@ -191,5 +200,19 @@ public class MainActivity extends AppCompatActivity {
         double secondVar = Double.parseDouble(secondVariable);
         double resultVar = operationOfSign(firstVar, secondVar, sign);
         resultVariable = String.valueOf(resultVar);
+
+        int position = -1;
+        for (int i = resultVariable.length() - 1; i >= 0; --i) {
+            if (resultVariable.charAt(i) == '0') {
+                position = i;
+            }
+        }
+
+        if (position > 0) {
+            if (resultVariable.charAt(position - 1) == '.') {
+                position -= 1;
+            }
+            resultVariable = resultVariable.substring(0, position);
+        }
     }
 }

@@ -2,5 +2,6 @@
 <resources>
     <dimen name="button_text_size">22sp</dimen>
     <dimen name="input_text_size">25sp</dimen>
-    <dimen name="input_padding">50dp</dimen>
+    <dimen name="input_padding">25dp</dimen>
+    <dimen name="input_height">300dp</dimen>
 </resources>
