@@ -215,4 +215,57 @@ public class MainActivity extends AppCompatActivity {
             resultVariable = resultVariable.substring(0, position);
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(Constants.KEY_FIRST_VARIABLE, firstVariable);
+        outState.putString(Constants.KEY_SECOND_VARIABLE, secondVariable);
+        outState.putString(Constants.KEY_RESULT_VARIABLE, resultVariable);
+        outState.putString(Constants.KEY_SIGN, sign);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            firstVariable = savedInstanceState.getString(Constants.KEY_FIRST_VARIABLE);
+            secondVariable = savedInstanceState.getString(Constants.KEY_SECOND_VARIABLE);
+            resultVariable = savedInstanceState.getString(Constants.KEY_RESULT_VARIABLE);
+            sign = savedInstanceState.getString(Constants.KEY_SIGN);
+        }
+
+        String result = "";
+        if (firstVariable.isEmpty()) {
+            input.setText(result);
+            return;
+        }
+        else {
+            result += firstVariable;
+        }
+        if (sign != null && sign.isEmpty()) {
+            input.setText(result);
+            return;
+        }
+        else {
+            result += sign;
+        }
+        if (secondVariable.isEmpty()) {
+            input.setText(result);
+            return;
+        }
+        else {
+            result += secondVariable;
+        }
+        if (resultVariable.isEmpty()) {
+            input.setText(result);
+            return;
+        }
+        else {
+            result += "=" + resultVariable;
+        }
+        input.setText(result);
+    }
 }
