@@ -1,21 +1,21 @@
 <resources>
     <string name="app_name">PZ2Calculator</string>
-    <string name="number1">1</string>
-    <string name="number2">2</string>
-    <string name="number3">3</string>
-    <string name="number4">4</string>
-    <string name="number5">5</string>
-    <string name="number6">6</string>
-    <string name="number7">7</string>
-    <string name="number8">8</string>
-    <string name="number9">9</string>
-    <string name="number0">0</string>
-    <string name="eq_button">=</string>
-    <string name="plus_button">+</string>
-    <string name="minus_button">-</string>
-    <string name="multiply_button">*</string>
-    <string name="divide_button">/</string>
-    <string name="backspace_button"><![CDATA[<—]]></string>
-    <string name="dot_button">.</string>
+    <string name="number1" translatable="false">1</string>
+    <string name="number2" translatable="false">2</string>
+    <string name="number3" translatable="false">3</string>
+    <string name="number4" translatable="false">4</string>
+    <string name="number5" translatable="false">5</string>
+    <string name="number6" translatable="false">6</string>
+    <string name="number7" translatable="false">7</string>
+    <string name="number8" translatable="false">8</string>
+    <string name="number9" translatable="false">9</string>
+    <string name="number0" translatable="false">0</string>
+    <string name="eq_button" translatable="false">=</string>
+    <string name="plus_button" translatable="false">+</string>
+    <string name="minus_button" translatable="false">-</string>
+    <string name="multiply_button" translatable="false">*</string>
+    <string name="divide_button" translatable="false">/</string>
+    <string name="backspace_button" translatable="false"><![CDATA[<—]]></string>
+    <string name="dot_button" translatable="false">.</string>
     <string name="error">Error</string>
 </resources>

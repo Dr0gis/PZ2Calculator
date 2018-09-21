@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         number9.setOnClickListener(new OnClickNumberButton());
         number0.setOnClickListener(new OnClickNumberButton());
         backspaceButton.setOnClickListener(new OnClickBackspaceButton());
+        backspaceButton.setOnLongClickListener(new OnLongClickBackspaceButton());
         eqButton.setOnClickListener(new OnClickEqButton());
         plusButton.setOnClickListener(new OnClickSignButton());
         minusButton.setOnClickListener(new OnClickSignButton());
@@ -155,6 +156,20 @@ public class MainActivity extends AppCompatActivity {
             }
             input.setText(result);
             inputScroll.fullScroll(View.FOCUS_DOWN);
+        }
+    }
+
+    class OnLongClickBackspaceButton implements View.OnLongClickListener {
+
+        @Override
+        public boolean onLongClick(View v) {
+            firstVariable = "";
+            secondVariable = "";
+            resultVariable = "";
+            sign = "";
+            input.setText("");
+
+            return false;
         }
     }
 
